@@ -12,6 +12,10 @@ const FirstDiv = styled.div`
   display: flex;
   justify-content: space-around;
   width: 90%;
+  background-color: ${props => {
+    if(props.selectedValue === "") return "red";
+    else return "white";
+  }}
 `;
 
 function SelectDisplay() {
@@ -21,18 +25,15 @@ function SelectDisplay() {
     setSelectObjectValue(value);
   };
 
-  
-
-
   return (
     <>
       <FirstMain>
-        <FirstDiv>
-          <Select onChange={handleChangeObjectValue} options={WeaponSort} />
+        <FirstDiv selected={ selectObjectValue } selectedValue={ selectObjectValue }>
+          <Select onChange={handleChangeObjectValue} options={WeaponSort}/>
           <SelectAnimation value={ selectObjectValue }/>
         </FirstDiv>  
       </FirstMain>
-    <p>Object : {selectObjectValue}</p>
+      <p>Object : {selectObjectValue}</p>
     </>
   );
 }
